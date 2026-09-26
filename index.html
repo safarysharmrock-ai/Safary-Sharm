@@ -100,13 +100,17 @@
     padding:9px 18px; border-radius:3px; font-weight:700; font-size:14px;
     border:1px solid rgba(247,239,221,0.25);
   }
-  .lang-toggle{
-    display:flex; align-items:center; gap:6px;
-    background:transparent; color:var(--cream);
-    padding:8px 14px; border-radius:3px; font-weight:700; font-size:13px;
-    border:1px solid rgba(247,239,221,0.35); cursor:pointer; letter-spacing:.3px;
+  .lang-switch{
+    display:flex; align-items:center; gap:2px;
+    border:1px solid rgba(247,239,221,0.35); border-radius:3px; overflow:hidden;
   }
-  .lang-toggle:hover{border-color:var(--gold); color:var(--gold);}
+  .lang-btn{
+    background:transparent; color:var(--cream); opacity:.6;
+    padding:7px 11px; font-weight:700; font-size:12px; letter-spacing:.3px;
+    border:none; cursor:pointer;
+  }
+  .lang-btn.is-active{opacity:1; background:rgba(247,239,221,0.12); color:var(--gold);}
+  .lang-btn:hover{opacity:1;}
   .burger{display:none;}
 
   /* ---------- HERO ---------- */
@@ -317,8 +321,12 @@
       <a href="#why" data-i18n="nav_why">ليه روك سفاري</a>
       <a href="#contact" data-i18n="nav_contact">تواصل معنا</a>
     </nav>
-    <button class="lang-toggle" id="langToggle" type="button">RU</button>
-    <a class="nav-cta wa-link" id="navCta" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener">
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn" type="button" data-lang="ar">AR</button>
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+      <button class="lang-btn" type="button" data-lang="ru">RU</button>
+    </div>
+    <a class="nav-cta wa-link" id="navCta" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" data-msg-en="Hello, I'd like to ask about safari trips" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener">
       <span data-i18n="nav_whatsapp">واتساب</span>
     </a>
   </div>
@@ -362,7 +370,7 @@
     <h1 data-i18n-html="hero_h1">الصحراء ملهاش <span>حدود</span>،<br>وإحنا هنوريك ليه</h1>
     <p class="lede" data-i18n="hero_lede">رحلات باجي وكارباجي وجمال وحفلات بدوية وسط كثبان سيناء، مع مرشدين محترفين واهتمام كامل بالسلامة من أول لحظة لحد آخر خطوة.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener"><span data-i18n="hero_cta1">احجز رحلتك دلوقتي</span></a>
+      <a class="btn btn-primary wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" data-msg-en="Hello, I'd like to ask about safari trips" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener"><span data-i18n="hero_cta1">احجز رحلتك دلوقتي</span></a>
       <a class="btn btn-ghost" href="#trips" data-i18n="hero_cta2">استكشف الرحلات</a>
     </div>
   </div>
@@ -435,7 +443,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label" data-i18n="price_from">يبدأ من</div><div class="value" data-i18n="t1_price">25$ للفرد</div></div>
-          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الباجي" data-msg-ru="Здравствуйте, хочу забронировать поездку на багги" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
+          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الباجي" data-msg-ru="Здравствуйте, хочу забронировать поездку на багги" data-msg-en="Hello, I'd like to book the buggy trip" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
         </div>
       </div>
     </div>
@@ -455,7 +463,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label" data-i18n="price_from">يبدأ من</div><div class="value" data-i18n="t2_price">20$ للفرد</div></div>
-          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الكارباجي" data-msg-ru="Здравствуйте, хочу забронировать поездку на карт-багги" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D8%B1%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
+          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الكارباجي" data-msg-ru="Здравствуйте, хочу забронировать поездку на карт-багги" data-msg-en="Hello, I'd like to book the kart-buggy trip" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D8%B1%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
         </div>
       </div>
       <div class="bg-wrap">
@@ -545,7 +553,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label" data-i18n="price_from">يبدأ من</div><div class="value" data-i18n="t3_price">30$ للفرد</div></div>
-          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز الحفلة البدوية" data-msg-ru="Здравствуйте, хочу забронировать бедуинскую вечеринку" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%AD%D9%81%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
+          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز الحفلة البدوية" data-msg-ru="Здравствуйте, хочу забронировать бедуинскую вечеринку" data-msg-en="Hello, I'd like to book the Bedouin party" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%AD%D9%81%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
         </div>
       </div>
     </div>
@@ -565,7 +573,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label" data-i18n="price_from">يبدأ من</div><div class="value" data-i18n="t4_price">15$ للفرد</div></div>
-          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الجمال" data-msg-ru="Здравствуйте, хочу забронировать поездку на верблюдах" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%84" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
+          <a class="trip-btn wa-link" data-msg-ar="مرحباً، عاوز أحجز رحلة الجمال" data-msg-ru="Здравствуйте, хочу забронировать поездку на верблюдах" data-msg-en="Hello, I'd like to book the camel trip" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%84" target="_blank" rel="noopener" data-i18n="btn_book">احجز الرحلة</a>
         </div>
       </div>
       <div class="trip-gallery">
@@ -644,7 +652,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2C8.5 22 2 15.5 2 7a2 2 0 0 1 1-2Z" stroke="#B4451E" stroke-width="1.6"/></svg>
         <span data-i18n="contact_wa_line">تواصل مباشر عبر واتساب</span>
       </div>
-      <a class="btn btn-primary wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" style="margin-top:18px; background:#25D366; border-color:transparent;" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener" data-i18n="contact_btn">راسلنا على واتساب</a>
+      <a class="btn btn-primary wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" data-msg-en="Hello, I'd like to ask about safari trips" style="margin-top:18px; background:#25D366; border-color:transparent;" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener" data-i18n="contact_btn">راسلنا على واتساب</a>
     </div>
     <div class="map-box">
       <iframe src="https://www.google.com/maps?q=%D9%85%D9%86%D8%B7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A%D8%8C%20%D9%88%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%AE%D8%B1%D9%88%D9%85%D8%8C%20%D8%B4%D8%B1%D9%85%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%D8%8C%20%D8%AC%D9%86%D9%88%D8%A8%20%D8%B3%D9%8A%D9%86%D8%A7%D8%A1&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -659,7 +667,7 @@
   </div>
 </footer>
 
-<a class="wa-float wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" data-i18n-attr-aria-label="wa_float_aria">
+<a class="wa-float wa-link" data-msg-ar="مرحباً، عاوز أستفسر عن رحلات السفاري" data-msg-ru="Здравствуйте, хочу узнать о сафари-турах" data-msg-en="Hello, I'd like to ask about safari trips" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" data-i18n-attr-aria-label="wa_float_aria">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.4 1.27-1.93 1.32-.5.05-1 .24-3.35-.7-2.83-1.14-4.63-4-4.77-4.2-.14-.2-1.15-1.53-1.15-2.92s.72-2.07.98-2.35c.24-.27.53-.34.7-.34h.5c.16 0 .38-.03.58.44.24.56.8 1.95.87 2.09.07.14.12.3.02.5-.1.2-.15.32-.3.5-.15.17-.3.38-.44.5-.14.15-.3.3-.13.6.17.3.77 1.27 1.65 2.06 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.66-.08.18-.2.77-.9.98-1.2.2-.3.4-.25.68-.15.27.1 1.75.83 2.05.98.3.15.5.22.58.35.07.13.07.75-.17 1.41Z"/></svg>
 </a>
 
@@ -828,17 +836,20 @@
 </script>
 
 <script>
-  // ---------- Language toggle (AR <-> RU) ----------
+  // ---------- Language switch (AR / EN / RU) ----------
   (function(){
-    const RU = {"nav_trips": "Поездки", "nav_why": "Почему Rock Safari", "nav_contact": "Контакты", "nav_whatsapp": "WhatsApp", "hero_eyebrow": "Шарм-эль-Шейх — сафари-зона", "hero_lede": "Поездки на багги, карт-багги и верблюдах, бедуинские вечеринки среди дюн Синая — с профессиональными гидами и полной заботой о безопасности от начала до конца.", "hero_cta1": "Забронировать поездку", "hero_cta2": "Смотреть поездки", "about_h2": "Rock Safari — пустыня Синая такой, какой вы её представляли", "about_p": "Компания, специализирующаяся на сафари-турах в Шарм-эль-Шейхе. Мы предлагаем настоящие впечатления в сердце пустыни: от скорости багги и карт-багги — до спокойной прогулки на верблюдах на закате — до бедуинской вечеринки под звёздами. Каждую поездку ведут опытные гиды, знающие местность и её особенности.", "fact_location_label": "Расположение", "fact_location_value": "Сафари-зона, Вади-эль-Хуррум, Шарм-эль-Шейх, Южный Синай", "fact_contact_label": "Связь", "fact_contact_value": "Напрямую через WhatsApp", "fact_trips_label": "Доступные поездки", "fact_trips_value": "Багги · Карт-багги · Бедуинская вечеринка · Верблюды", "trips_kicker": "Наши поездки", "trips_h2": "Выберите своё приключение в пустыне", "price_from": "От", "btn_book": "Забронировать", "t1_name": "Поездка на пустынном багги", "t1_tagline": "Управляйте сами среди золотых дюн Синая", "t1_desc": "Вождение открытого багги в сопровождении опытного гида — вглубь пустыни, между дюнами и вади, с остановкой у зоны эха и коротким визитом в бедуинский шатёр на чай.", "t1_inc1": "Полное защитное снаряжение (шлем, шарф, очки)", "t1_inc2": "Одноместный или двухместный багги на выбор", "t1_inc3": "Остановка у зоны эха и бедуинского шатра", "t1_price": "25$ с человека", "t2_name": "Поездка на карт-багги", "t2_tagline": "Больше скорости и адреналина на разном рельефе", "t2_desc": "Для любителей адреналина: карт-багги даёт больше контроля и скорости на песчаных и каменистых трассах. Поездка для тех, кто хочет ощущений ярче, чем обычный багги, — тоже с гидом на протяжении всего маршрута.", "t2_inc1": "Краткий инструктаж перед стартом", "t2_inc2": "Смешанная трасса — песок и холмы", "t2_inc3": "Холодная вода и остановки для фото", "t2_price": "20$ с человека", "t3_name": "Бедуинская вечеринка", "t3_tagline": "Вечер под звёздами в подлинном духе Синая", "t3_desc": "Целый вечер в бедуинском лагере посреди пустыни: ужин на углях, шоу танцующего дервиша и восточные танцы, файер-шоу и бедуинский чай за душевными беседами. Подходит для семей, групп и медового месяца.", "t3_inc1": "Бедуинский ужин-гриль (мясо на углях + восточные блюда)", "t3_inc2": "Шоу танцующего дервиша и файер-шоу", "t3_inc3": "Трансфер на кондиционированном авто туда-обратно", "t3_price": "30$ с человека", "t4_name": "Поездка на верблюдах", "t4_tagline": "Спокойный ритм среди дюн на закате", "t4_desc": "Спокойная прогулка на верблюде среди песчаных дюн — лучшее время для закатных фото и тишины пустыни, вдали от шума багги и карт-багги. Подходит для любого возраста.", "t4_inc1": "Опытный бедуинский сопровождающий на протяжении всей поездки", "t4_inc2": "Время заката для лучших фото", "t4_inc3": "Подходит для детей и пожилых людей", "t4_price": "15$ с человека", "why_h2": "Почему стоит выбрать Rock Safari", "why_p": "Это не просто поездка — это полноценный опыт от первого сообщения нам до возвращения в отель.", "why1_num": "Безопасность", "why1_h3": "Полное снаряжение и оборудование", "why1_p": "Шлемы, шарфы, очки и инструктаж перед каждой поездкой.", "why2_num": "Гиды", "why2_h3": "Опыт работы на местности Синая", "why2_p": "Местная бедуинская команда, знающая каждую деталь окружающей пустыни.", "why3_num": "Гибкость", "why3_h3": "Индивидуальные и групповые поездки", "why3_p": "Семейная поездка или компания друзей — подберём удобное время.", "why4_num": "Трансфер", "why4_h3": "Трансфер из отеля и обратно", "why4_p": "Кондиционированные авто заберут вас из отеля в Шарм-эль-Шейхе и привезут обратно после поездки.", "contact_h2": "Готовы к приключению?", "contact_p": "Напишите нам в WhatsApp — поможем выбрать подходящую поездку и время, и организуем все детали.", "contact_wa_line": "Прямая связь через WhatsApp", "contact_btn": "Написать в WhatsApp", "footer_1": "© Rock Safari — Шарм-эль-Шейх", "footer_2": "Багги · Карт-багги · Бедуинские вечеринки · Верблюды", "wa_float_aria": "Связаться через WhatsApp", "zoom_aria": "Увеличить фото", "lb_close_aria": "Закрыть", "lb_prev_aria": "Предыдущее фото", "lb_next_aria": "Следующее фото"};
-    const RU_HTML = {"hero_h1": "У пустыни нет <span>границ</span>,<br>и мы покажем вам почему"};
+    const DICT = { ru: {"nav_trips": "Поездки", "nav_why": "Почему Rock Safari", "nav_contact": "Контакты", "nav_whatsapp": "WhatsApp", "hero_eyebrow": "Шарм-эль-Шейх — сафари-зона", "hero_lede": "Поездки на багги, карт-багги и верблюдах, бедуинские вечеринки среди дюн Синая — с профессиональными гидами и полной заботой о безопасности от начала до конца.", "hero_cta1": "Забронировать поездку", "hero_cta2": "Смотреть поездки", "about_h2": "Rock Safari — пустыня Синая такой, какой вы её представляли", "about_p": "Компания, специализирующаяся на сафари-турах в Шарм-эль-Шейхе. Мы предлагаем настоящие впечатления в сердце пустыни: от скорости багги и карт-багги — до спокойной прогулки на верблюдах на закате — до бедуинской вечеринки под звёздами. Каждую поездку ведут опытные гиды, знающие местность и её особенности.", "fact_location_label": "Расположение", "fact_location_value": "Сафари-зона, Вади-эль-Хуррум, Шарм-эль-Шейх, Южный Синай", "fact_contact_label": "Связь", "fact_contact_value": "Напрямую через WhatsApp", "fact_trips_label": "Доступные поездки", "fact_trips_value": "Багги · Карт-багги · Бедуинская вечеринка · Верблюды", "trips_kicker": "Наши поездки", "trips_h2": "Выберите своё приключение в пустыне", "price_from": "От", "btn_book": "Забронировать", "t1_name": "Поездка на пустынном багги", "t1_tagline": "Управляйте сами среди золотых дюн Синая", "t1_desc": "Вождение открытого багги в сопровождении опытного гида — вглубь пустыни, между дюнами и вади, с остановкой у зоны эха и коротким визитом в бедуинский шатёр на чай.", "t1_inc1": "Полное защитное снаряжение (шлем, шарф, очки)", "t1_inc2": "Одноместный или двухместный багги на выбор", "t1_inc3": "Остановка у зоны эха и бедуинского шатра", "t1_price": "25$ с человека", "t2_name": "Поездка на карт-багги", "t2_tagline": "Больше скорости и адреналина на разном рельефе", "t2_desc": "Для любителей адреналина: карт-багги даёт больше контроля и скорости на песчаных и каменистых трассах. Поездка для тех, кто хочет ощущений ярче, чем обычный багги, — тоже с гидом на протяжении всего маршрута.", "t2_inc1": "Краткий инструктаж перед стартом", "t2_inc2": "Смешанная трасса — песок и холмы", "t2_inc3": "Холодная вода и остановки для фото", "t2_price": "20$ с человека", "t3_name": "Бедуинская вечеринка", "t3_tagline": "Вечер под звёздами в подлинном духе Синая", "t3_desc": "Целый вечер в бедуинском лагере посреди пустыни: ужин на углях, шоу танцующего дервиша и восточные танцы, файер-шоу и бедуинский чай за душевными беседами. Подходит для семей, групп и медового месяца.", "t3_inc1": "Бедуинский ужин-гриль (мясо на углях + восточные блюда)", "t3_inc2": "Шоу танцующего дервиша и файер-шоу", "t3_inc3": "Трансфер на кондиционированном авто туда-обратно", "t3_price": "30$ с человека", "t4_name": "Поездка на верблюдах", "t4_tagline": "Спокойный ритм среди дюн на закате", "t4_desc": "Спокойная прогулка на верблюде среди песчаных дюн — лучшее время для закатных фото и тишины пустыни, вдали от шума багги и карт-багги. Подходит для любого возраста.", "t4_inc1": "Опытный бедуинский сопровождающий на протяжении всей поездки", "t4_inc2": "Время заката для лучших фото", "t4_inc3": "Подходит для детей и пожилых людей", "t4_price": "15$ с человека", "why_h2": "Почему стоит выбрать Rock Safari", "why_p": "Это не просто поездка — это полноценный опыт от первого сообщения нам до возвращения в отель.", "why1_num": "Безопасность", "why1_h3": "Полное снаряжение и оборудование", "why1_p": "Шлемы, шарфы, очки и инструктаж перед каждой поездкой.", "why2_num": "Гиды", "why2_h3": "Опыт работы на местности Синая", "why2_p": "Местная бедуинская команда, знающая каждую деталь окружающей пустыни.", "why3_num": "Гибкость", "why3_h3": "Индивидуальные и групповые поездки", "why3_p": "Семейная поездка или компания друзей — подберём удобное время.", "why4_num": "Трансфер", "why4_h3": "Трансфер из отеля и обратно", "why4_p": "Кондиционированные авто заберут вас из отеля в Шарм-эль-Шейхе и привезут обратно после поездки.", "contact_h2": "Готовы к приключению?", "contact_p": "Напишите нам в WhatsApp — поможем выбрать подходящую поездку и время, и организуем все детали.", "contact_wa_line": "Прямая связь через WhatsApp", "contact_btn": "Написать в WhatsApp", "footer_1": "© Rock Safari — Шарм-эль-Шейх", "footer_2": "Багги · Карт-багги · Бедуинские вечеринки · Верблюды", "wa_float_aria": "Связаться через WhatsApp", "zoom_aria": "Увеличить фото", "lb_close_aria": "Закрыть", "lb_prev_aria": "Предыдущее фото", "lb_next_aria": "Следующее фото"}, en: {"nav_trips": "Trips", "nav_why": "Why Rock Safari", "nav_contact": "Contact", "nav_whatsapp": "WhatsApp", "hero_eyebrow": "Sharm El Sheikh — Safari Area", "hero_lede": "Buggy, kart-buggy and camel trips, plus Bedouin desert parties among the dunes of Sinai — with professional guides and full attention to safety from start to finish.", "hero_cta1": "Book your trip now", "hero_cta2": "Explore trips", "about_h2": "Rock Safari.. the Sinai desert just as you imagined it", "about_p": "A company specialised in desert safari trips in Sharm El Sheikh. We offer authentic experiences deep in the desert: from the speed of buggies and kart-buggies, to the calm of a sunset camel ride, to a Bedouin evening under the stars. Every trip is led by experienced guides who know the region and its terrain.", "fact_location_label": "Location", "fact_location_value": "Safari Area, Wadi El Kharoum, Sharm El Sheikh, South Sinai", "fact_contact_label": "Contact", "fact_contact_value": "Direct on WhatsApp", "fact_trips_label": "Available trips", "fact_trips_value": "Buggy · Kart-buggy · Bedouin party · Camel", "trips_kicker": "Our trips", "trips_h2": "Choose your desert adventure", "price_from": "From", "btn_book": "Book this trip", "t1_name": "Desert Buggy Trip", "t1_tagline": "Take the wheel among the golden dunes of Sinai", "t1_desc": "Drive an open buggy with an experienced guide, deep into the desert between the dunes and wadis, with a stop at the echo point and a short visit to a Bedouin tent for tea.", "t1_inc1": "Full safety gear (helmet, scarf, goggles)", "t1_inc2": "Single or double buggy, your choice", "t1_inc3": "Stop at the echo point and a Bedouin tent", "t1_price": "$25 per person", "t2_name": "Kart-Buggy Trip", "t2_tagline": "More speed and thrill across varied terrain", "t2_desc": "For adrenaline lovers.. the kart-buggy gives you wider control and higher speed across different sandy and rocky tracks. A trip designed for those who want a stronger feeling than a regular buggy, also guided all the way.", "t2_inc1": "Quick briefing before setting off", "t2_inc2": "Mixed track between sand and hills", "t2_inc3": "Cold water and photo stops", "t2_price": "$20 per person", "t3_name": "Bedouin Party", "t3_tagline": "An evening under the stars with authentic Sinai spirit", "t3_desc": "A full evening at a Bedouin camp in the desert: charcoal-grilled dinner, tanoura and oriental dance show, a fire show, and Bedouin tea amid genuine conversation. A great fit for families, groups and honeymooners.", "t3_inc1": "Bedouin grilled dinner (BBQ + oriental dishes)", "t3_inc2": "Tanoura show and fire show", "t3_inc3": "Air-conditioned hotel transfer both ways", "t3_price": "$30 per person", "t4_name": "Camel Ride Trip", "t4_tagline": "A calm pace among the dunes at sunset", "t4_desc": "A calm ride on camelback across the sand dunes — the best time for sunset photos and enjoying the desert's stillness, away from the buzz of buggies and kart-buggies. Suitable for all ages.", "t4_inc1": "Expert Bedouin companion throughout the ride", "t4_inc2": "Sunset timing for the best photos", "t4_inc3": "Suitable for children and seniors", "t4_price": "$15 per person", "why_h2": "Why choose Rock Safari", "why_p": "Not just a trip.. a complete experience from the first message to you returning to your hotel.", "why1_num": "Safety", "why1_h3": "Complete gear and equipment", "why1_p": "Helmets, scarves, goggles, and a briefing before every driving trip.", "why2_num": "Guides", "why2_h3": "Experience with Sinai's terrain", "why2_p": "A local Bedouin team that knows every detail of the surrounding desert.", "why3_num": "Flexibility", "why3_h3": "Solo and group trips", "why3_p": "Whether it's a family visit or a group of friends, we'll arrange the right timing for you.", "why4_num": "Transfer", "why4_h3": "Hotel pickup and drop-off", "why4_p": "Air-conditioned cars pick you up from your hotel in Sharm El Sheikh and bring you back after the trip.", "contact_h2": "Ready for adventure?", "contact_p": "Message us on WhatsApp and we'll help you pick the right trip and time, and arrange every detail.", "contact_wa_line": "Direct contact via WhatsApp", "contact_btn": "Message us on WhatsApp", "footer_1": "© Rock Safari — Sharm El Sheikh", "footer_2": "Buggy · Kart-buggy · Bedouin parties · Camel", "wa_float_aria": "Contact us on WhatsApp", "zoom_aria": "Zoom photo", "lb_close_aria": "Close", "lb_prev_aria": "Previous photo", "lb_next_aria": "Next photo"} };
+    const DICT_HTML = { ru: {"hero_h1": "У пустыни нет <span>границ</span>,<br>и мы покажем вам почему"}, en: {"hero_h1": "The desert has no <span>limits</span>,<br>and we'll show you why"} };
+    const TITLES = {
+      ru: "Rock Safari | Багги, карт-багги, верблюды и бедуинские вечеринки в Шарм-эль-Шейхе",
+      en: "Rock Safari | Buggy, Kart-Buggy, Camel Rides and Bedouin Parties in Sharm El Sheikh"
+    };
 
     const root = document.documentElement;
-    const toggleBtn = document.getElementById('langToggle');
+    const switchEl = document.getElementById('langSwitch');
+    const langBtns = Array.from(switchEl.querySelectorAll('.lang-btn'));
     const AR_TITLE = document.title;
-    const RU_TITLE = "Rock Safari | Багги, карт-багги, верблюды и бедуинские вечеринки в Шарм-эль-Шейхе";
 
-    // cache original Arabic text/attrs on first run so we can switch back
     const textEls = Array.from(document.querySelectorAll('[data-i18n]'));
     const htmlEls = Array.from(document.querySelectorAll('[data-i18n-html]'));
     const attrEls = Array.from(document.querySelectorAll('[data-i18n-attr-alt], [data-i18n-attr-aria-label]'));
@@ -855,34 +866,12 @@
 
     function applyLang(l){
       lang = l;
-      if (l === 'ru') {
-        root.setAttribute('lang', 'ru');
-        root.setAttribute('dir', 'ltr');
-        document.title = RU_TITLE;
-        toggleBtn.textContent = 'AR';
-        textEls.forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (RU[key]) el.textContent = RU[key];
-        });
-        htmlEls.forEach(el => {
-          const key = el.getAttribute('data-i18n-html');
-          if (RU_HTML[key]) el.innerHTML = RU_HTML[key];
-        });
-        attrEls.forEach(el => {
-          const altKey = el.getAttribute('data-i18n-attr-alt');
-          if (altKey && RU[altKey]) el.setAttribute('alt', RU[altKey]);
-          const ariaKey = el.getAttribute('data-i18n-attr-aria-label');
-          if (ariaKey && RU[ariaKey]) el.setAttribute('aria-label', RU[ariaKey]);
-        });
-        waLinks.forEach(el => {
-          const msg = el.getAttribute('data-msg-ru');
-          if (msg) el.setAttribute('href', 'https://wa.me/201018552777?text=' + encodeURIComponent(msg));
-        });
-      } else {
+      langBtns.forEach(b => b.classList.toggle('is-active', b.dataset.lang === l));
+
+      if (l === 'ar') {
         root.setAttribute('lang', 'ar');
         root.setAttribute('dir', 'rtl');
         document.title = AR_TITLE;
-        toggleBtn.textContent = 'RU';
         textEls.forEach(el => { el.textContent = el.dataset.arText; });
         htmlEls.forEach(el => { el.innerHTML = el.dataset.arHtml; });
         attrEls.forEach(el => {
@@ -893,12 +882,37 @@
           const msg = el.getAttribute('data-msg-ar');
           if (msg) el.setAttribute('href', 'https://wa.me/201018552777?text=' + encodeURIComponent(msg));
         });
+      } else {
+        const D = DICT[l], DH = DICT_HTML[l];
+        root.setAttribute('lang', l);
+        root.setAttribute('dir', 'ltr');
+        document.title = TITLES[l];
+        textEls.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (D[key]) el.textContent = D[key];
+        });
+        htmlEls.forEach(el => {
+          const key = el.getAttribute('data-i18n-html');
+          if (DH[key]) el.innerHTML = DH[key];
+        });
+        attrEls.forEach(el => {
+          const altKey = el.getAttribute('data-i18n-attr-alt');
+          if (altKey && D[altKey]) el.setAttribute('alt', D[altKey]);
+          const ariaKey = el.getAttribute('data-i18n-attr-aria-label');
+          if (ariaKey && D[ariaKey]) el.setAttribute('aria-label', D[ariaKey]);
+        });
+        waLinks.forEach(el => {
+          const msg = el.getAttribute('data-msg-' + l);
+          if (msg) el.setAttribute('href', 'https://wa.me/201018552777?text=' + encodeURIComponent(msg));
+        });
       }
       localStorage.setItem('rs_lang', l);
     }
 
-    toggleBtn.addEventListener('click', () => applyLang(lang === 'ar' ? 'ru' : 'ar'));
-    if (lang === 'ru') applyLang('ru');
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+    applyLang(lang);
   })();
 </script>
 </body>

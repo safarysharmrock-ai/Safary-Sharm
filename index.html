@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="روك سفاري — رحلات باجي وكواد وجمال وحفلات بدوية في شرم الشيخ. احجز عبر واتساب.">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="روك سفاري | رحلات السفاري في شرم الشيخ">
+<meta property="og:description" content="باجي، كواد، جمال وحفلات بدوية وسط صحراء سيناء.">
+<meta property="og:image" content="https://safarysharmrock-ai.github.io/Safary-Sharm/images/og-cover.jpg">
 <title>روك سفاري | رحلات السفاري في شرم الشيخ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,9 +137,9 @@
   .trip:nth-child(even) .trip-grid{direction:ltr;}
   .trip:nth-child(even) .trip-grid > *{direction:rtl;}
 
-  .trip-gallery{display:grid; grid-template-columns:1.3fr .9fr; grid-template-rows:auto auto; gap:12px;}
+  .trip-gallery{display:grid; grid-template-columns:1.3fr .9fr; grid-template-rows:1fr 1fr; gap:12px; aspect-ratio:1.45/1;}
   .trip-gallery svg{width:100%; height:100%; border-radius:4px; display:block;}
-  .trip-gallery img{width:100%; height:100%; object-fit:cover; border-radius:4px; display:block; cursor:zoom-in; transition:transform .35s ease, filter .35s ease;}
+  .trip-gallery img{width:100%; height:100%; min-height:0; object-fit:cover; border-radius:4px; display:block; cursor:zoom-in; transition:transform .35s ease, filter .35s ease;}
   .trip-gallery img:hover{transform:scale(1.02); filter:brightness(1.05);}
   .g-main{grid-row:1 / 3;}
 
@@ -304,6 +310,53 @@
     .why-list{grid-template-columns:1fr;}
     .why-item:nth-child(odd){border-left:none;}
   }
+
+  /* ---------- FLUID IMAGE SYSTEM ---------- */
+  .trip-gallery.slider{display:block; aspect-ratio:auto; position:relative; direction:ltr; min-width:0;}
+  .slider .stage{position:relative; overflow:hidden; border-radius:8px; background:#100B06; box-shadow:0 24px 54px rgba(36,26,18,.28); touch-action:pan-y; cursor:zoom-in;}
+  .slider.portrait .stage{aspect-ratio:4/5; max-height:78vh;}
+  .slider.land .stage{aspect-ratio:4/3;}
+  .slider .slide{position:absolute; inset:0; opacity:0; transition:opacity 1s ease; pointer-events:none;}
+  .slider .slide.on{opacity:1; z-index:2;}
+  .trip-gallery.slider .slide img{width:100%; height:100%; object-fit:cover; border-radius:0; transform:scale(1.07); transition:transform 7s cubic-bezier(.2,.6,.2,1); cursor:zoom-in;}
+  .trip-gallery.slider .slide.on img{transform:scale(1);}
+  .s-arrow{position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border-radius:50%; border:1px solid rgba(247,239,221,.35); background:rgba(16,11,6,.45); color:var(--cream); font-size:22px; line-height:1; cursor:pointer; backdrop-filter:blur(4px); opacity:0; transition:opacity .3s, background .2s;}
+  .s-arrow:hover{background:rgba(16,11,6,.75);}
+  .s-arrow.prev{left:12px;} .s-arrow.next{right:12px;}
+  .stage:hover .s-arrow{opacity:1;}
+  @media (hover:none){.s-arrow{opacity:.85;}}
+  .s-count{position:absolute; bottom:14px; right:14px; z-index:5; color:var(--cream); font-size:13px; font-weight:700; background:rgba(16,11,6,.55); padding:3px 10px; border-radius:20px;}
+  .s-bar{position:absolute; left:0; right:0; bottom:0; height:3px; z-index:5; background:rgba(247,239,221,.15);}
+  .s-bar i{display:block; height:100%; width:0; background:var(--gold); animation:sprog 4.8s linear forwards;}
+  @keyframes sprog{to{width:100%;}}
+  @media (hover:hover){.slider:hover .s-bar i{animation-play-state:paused;}}
+  .slider.off .s-bar i, body.lb-open .s-bar i{animation-play-state:paused;}
+  .thumbs{position:relative; display:flex; gap:8px; margin-top:12px; padding:5px 2px 2px; overflow-x:auto; scrollbar-width:none;}
+  .thumbs::-webkit-scrollbar{display:none;}
+  .thumbs button{flex:0 0 auto; width:64px; height:64px; padding:0; border:2px solid transparent; border-radius:6px; overflow:hidden; background:none; cursor:pointer; opacity:.5; transition:opacity .3s, transform .3s, border-color .3s;}
+  .thumbs button:hover{opacity:.85;}
+  .thumbs button.on{opacity:1; border-color:var(--clay); transform:translateY(-3px);}
+  .trip-gallery.slider .thumbs img{width:100%; height:100%; object-fit:cover; border-radius:0; cursor:pointer;}
+  .trip-gallery.slider .thumbs img:hover{transform:none; filter:none;}
+
+  .lightbox.open{animation:lbin .35s ease;}
+  @keyframes lbin{from{opacity:0;}to{opacity:1;}}
+  #lightboxImg{transition:opacity .22s ease, transform .35s ease;}
+  #lightboxImg.out{opacity:0; transform:scale(.97);}
+  .lb-nav{position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; border:1px solid rgba(247,239,221,.3); background:rgba(247,239,221,.1); color:#F7EFDD; font-size:26px; line-height:1; cursor:pointer; z-index:3; transition:background .2s;}
+  .lb-nav:hover{background:rgba(247,239,221,.24);}
+  .lb-nav.prev{left:16px;} .lb-nav.next{right:16px;}
+  .lb-count{position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:var(--cream); font-size:14px; font-weight:700; opacity:.85;}
+  .lightbox.single .lb-nav, .lightbox.single .lb-count{display:none;}
+  @media (max-width:640px){.lb-nav{width:40px; height:40px; font-size:22px;} .lb-nav.prev{left:8px;} .lb-nav.next{right:8px;} .thumbs button{width:54px; height:54px;}}
+
+  .js .rv{opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);}
+  .js .rv.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .js .rv{opacity:1; transform:none; transition:none;}
+    .s-bar i{animation:none;}
+    .slider .slide, .trip-gallery.slider .slide img, #lightboxImg{transition:none;}
+  }
 </style>
 </head>
 <body>
@@ -323,7 +376,7 @@
       <a href="#why">ليه روك سفاري</a>
       <a href="#contact">تواصل معنا</a>
     </nav>
-    <a class="nav-cta" href="https://wa.me/201000000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B1%D9%88%D9%83%20%D8%B3%D9%81%D8%A7%D8%B1%D9%8A%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener">
+    <a class="nav-cta" href="https://wa.me/201018552777?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B1%D9%88%D9%83%20%D8%B3%D9%81%D8%A7%D8%B1%D9%8A%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B3%D9%81%D8%A7%D8%B1%D9%8A" target="_blank" rel="noopener">
       واتساب
     </a>
   </div>
@@ -367,7 +420,7 @@
     <h1>الصحراء ملهاش <span>حدود</span>،<br>وإحنا هنوريك ليه</h1>
     <p class="lede">رحلات باجي وكارباجي وجمال وحفلات بدوية وسط كثبان سيناء، مع مرشدين محترفين واهتمام كامل بالسلامة من أول لحظة لحد آخر خطوة.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://wa.me/201000000000" target="_blank" rel="noopener">احجز رحلتك دلوقتي</a>
+      <a class="btn btn-primary" href="https://wa.me/201018552777" target="_blank" rel="noopener">احجز رحلتك دلوقتي</a>
       <a class="btn btn-ghost" href="#trips">استكشف الرحلات</a>
     </div>
   </div>
@@ -398,34 +451,7 @@
   <!-- TRIP 1: BUGGY -->
   <article class="trip">
     <div class="wrap trip-grid">
-      <div class="trip-gallery">
-        <svg class="g-main" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F2B85A"/><stop offset="100%" stop-color="#B4451E"/></linearGradient></defs>
-          <rect width="400" height="460" fill="url(#b1)"/>
-          <circle cx="310" cy="90" r="46" fill="#FCE7B0" opacity=".9"/>
-          <path d="M0 300 Q120 250 240 300 T400 280 V460 H0 Z" fill="#8A3216" opacity=".7"/>
-          <path d="M0 360 Q140 320 280 360 T400 340 V460 H0 Z" fill="#5A2410"/>
-          <g transform="translate(120,360)">
-            <path d="M0 46 Q6 8 55 6 L108 6 Q128 6 138 28 L158 46 Z" fill="#1B140D"/>
-            <circle cx="24" cy="50" r="15" fill="#1B140D"/>
-            <circle cx="128" cy="50" r="15" fill="#1B140D"/>
-            <path d="M132 12 L166 -24" stroke="#1B140D" stroke-width="5" stroke-linecap="round"/>
-          </g>
-          <path d="M30 420 Q90 400 118 372" stroke="#3E2010" stroke-width="4" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#8A3216"/>
-          <circle cx="190" cy="45" r="22" fill="#F2B85A"/>
-          <path d="M0 140 Q70 110 140 145 T240 130 V210 H0 Z" fill="#5A2410"/>
-          <path d="M0 175 Q80 155 160 178 T240 165 V210 H0 Z" fill="#241609"/>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#5A2410"/>
-          <path d="M20 150 q40 -50 70 -10 q30 -45 65 5 q35 -35 65 10" stroke="#F2B85A" stroke-width="4" fill="none" opacity=".55"/>
-          <circle cx="120" cy="60" r="10" fill="#F2B85A"/>
-          <path d="M0 160 Q90 130 180 160 T240 150 V210 H0 Z" fill="#241609"/>
-        </svg>
-      </div>
+      <div class="trip-gallery slider" data-set="kartbuggy"></div>
       <div class="trip-copy">
         <div class="trip-name">رحلة الباجي الصحراوي</div>
         <div class="trip-tagline">اتحكم في القيادة وسط كثبان سيناء الذهبية</div>
@@ -437,7 +463,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label">يبدأ من</div><div class="value">25$ للفرد</div></div>
-          <a class="trip-btn" href="https://wa.me/201000000000?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener">احجز الرحلة</a>
+          <a class="trip-btn" href="https://wa.me/201018552777?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener">احجز الرحلة</a>
         </div>
       </div>
     </div>
@@ -457,45 +483,17 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label">يبدأ من</div><div class="value">20$ للفرد</div></div>
-          <a class="trip-btn" href="https://wa.me/201000000000?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D8%B1%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener">احجز الرحلة</a>
+          <a class="trip-btn" href="https://wa.me/201018552777?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D8%B1%D8%A8%D8%A7%D8%AC%D9%8A" target="_blank" rel="noopener">احجز الرحلة</a>
         </div>
       </div>
-      <div class="trip-gallery">
-        <svg class="g-main" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="b2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8B24B"/><stop offset="100%" stop-color="#8A3216"/></linearGradient></defs>
-          <rect width="400" height="460" fill="url(#b2)"/>
-          <circle cx="90" cy="80" r="40" fill="#FCE7B0" opacity=".9"/>
-          <path d="M0 290 Q130 250 260 300 T400 270 V460 H0 Z" fill="#6B2E14" opacity=".75"/>
-          <path d="M0 355 Q140 320 280 360 T400 335 V460 H0 Z" fill="#3E2010"/>
-          <g transform="translate(150,350)">
-            <ellipse cx="0" cy="55" rx="20" ry="20" fill="#1B140D"/>
-            <ellipse cx="110" cy="55" rx="20" ry="20" fill="#1B140D"/>
-            <path d="M-10 40 L120 40 L128 12 L4 8 Z" fill="#1B140D"/>
-            <path d="M8 6 L8 -26" stroke="#1B140D" stroke-width="5" stroke-linecap="round"/>
-          </g>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#6B2E14"/>
-          <path d="M0 150 Q70 100 140 150 T240 140 V210 H0 Z" fill="#3E2010"/>
-          <circle cx="60" cy="55" r="18" fill="#E8B24B"/>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#3E2010"/>
-          <path d="M10 40 h60 M40 20 v40" stroke="#E8B24B" stroke-width="4" opacity=".5"/>
-          <path d="M0 160 Q90 135 180 160 T240 150 V210 H0 Z" fill="#241609"/>
-        </svg>
-      </div>
+      <div class="trip-gallery slider" data-set="quad"></div>
     </div>
   </article>
 
   <!-- TRIP 3: BEDOUIN PARTY -->
   <article class="trip">
     <div class="wrap trip-grid">
-      <div class="trip-gallery">
-        <img class="g-main" src="images/laialy-night-stage.jpg" alt="عرض ليلي على مسرح الحفلة البدوية" loading="lazy" onclick="openLightbox('images/laialy-night-stage.jpg')">
-        <img src="images/laialy-seating-night.jpg" alt="جلسات المخيم البدوي ليلاً" loading="lazy" onclick="openLightbox('images/laialy-seating-night.jpg')">
-        <img src="images/laialy-lounge-seating.jpg" alt="ركن جلوس بدوي بالسجاد الأحمر" loading="lazy" onclick="openLightbox('images/laialy-lounge-seating.jpg')">
-      </div>
+      <div class="trip-gallery slider" data-set="bedouin"></div>
       <div class="trip-copy">
         <div class="trip-name">الحفلة البدوية</div>
         <div class="trip-tagline">سهرة تحت النجوم بروح سيناء الأصيلة</div>
@@ -507,7 +505,7 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label">يبدأ من</div><div class="value">30$ للفرد</div></div>
-          <a class="trip-btn" href="https://wa.me/201000000000?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%AD%D9%81%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener">احجز الرحلة</a>
+          <a class="trip-btn" href="https://wa.me/201018552777?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A7%D9%84%D8%AD%D9%81%D9%84%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener">احجز الرحلة</a>
         </div>
       </div>
     </div>
@@ -527,35 +525,10 @@
         </ul>
         <div class="price-row">
           <div class="price-tag"><div class="label">يبدأ من</div><div class="value">15$ للفرد</div></div>
-          <a class="trip-btn" href="https://wa.me/201000000000?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%84" target="_blank" rel="noopener">احجز الرحلة</a>
+          <a class="trip-btn" href="https://wa.me/201018552777?text=%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%84" target="_blank" rel="noopener">احجز الرحلة</a>
         </div>
       </div>
-      <div class="trip-gallery">
-        <svg class="g-main" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="b4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C97B62"/><stop offset="100%" stop-color="#8A3216"/></linearGradient></defs>
-          <rect width="400" height="460" fill="url(#b4)"/>
-          <circle cx="300" cy="120" r="55" fill="#F2B85A"/>
-          <path d="M0 300 Q140 260 280 300 T400 280 V460 H0 Z" fill="#8A3216" opacity=".8"/>
-          <path d="M0 360 Q150 330 300 360 T400 340 V460 H0 Z" fill="#5A2410"/>
-          <g transform="translate(120,320)" fill="#1B140D">
-            <path d="M0 90 Q0 40 20 30 Q20 -10 45 -6 Q52 -30 68 -8 Q80 -6 78 20 Q95 20 95 55 Q108 60 105 90 Z"/>
-            <line x1="10" y1="90" x2="10" y2="115" stroke="#1B140D" stroke-width="6"/>
-            <line x1="40" y1="90" x2="40" y2="118" stroke="#1B140D" stroke-width="6"/>
-            <line x1="75" y1="90" x2="75" y2="115" stroke="#1B140D" stroke-width="6"/>
-            <line x1="98" y1="90" x2="98" y2="118" stroke="#1B140D" stroke-width="6"/>
-          </g>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#C97B62"/>
-          <circle cx="70" cy="55" r="22" fill="#F2B85A"/>
-          <path d="M0 150 Q70 120 140 150 T240 140 V210 H0 Z" fill="#8A3216"/>
-        </svg>
-        <svg viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg">
-          <rect width="240" height="210" fill="#8A3216"/>
-          <path d="M0 160 Q90 135 180 160 T240 150 V210 H0 Z" fill="#5A2410"/>
-          <circle cx="180" cy="50" r="16" fill="#F2B85A"/>
-        </svg>
-      </div>
+      <div class="trip-gallery slider" data-set="camel"></div>
     </div>
   </article>
 </section>
@@ -624,7 +597,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4a2 2 0 0 1-2 2C8.5 22 2 15.5 2 7a2 2 0 0 1 1-2Z" stroke="#B4451E" stroke-width="1.6"/></svg>
         تواصل مباشر عبر واتساب
       </div>
-      <a class="btn btn-primary" style="margin-top:18px; background:#25D366; border-color:transparent;" href="https://wa.me/201000000000" target="_blank" rel="noopener">راسلنا على واتساب</a>
+      <a class="btn btn-primary" style="margin-top:18px; background:#25D366; border-color:transparent;" href="https://wa.me/201018552777" target="_blank" rel="noopener">راسلنا على واتساب</a>
     </div>
     <div class="map-box">
       <iframe src="https://www.google.com/maps?q=Sharm+El+Sheikh+Safari+Area&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -642,10 +615,13 @@
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="إغلاق">✕</button>
-  <img id="lightboxImg" src="" alt="">
+  <button class="lb-nav prev" onclick="lbMove(-1,event)" aria-label="السابق">‹</button>
+  <img id="lightboxImg" class="out" src="" alt="">
+  <button class="lb-nav next" onclick="lbMove(1,event)" aria-label="التالي">›</button>
+  <div class="lb-count" id="lbCount"></div>
 </div>
 
-<a class="wa-float" href="https://wa.me/201000000000" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+<a class="wa-float" href="https://wa.me/201018552777" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.24.66-1.4 1.27-1.93 1.32-.5.05-1 .24-3.35-.7-2.83-1.14-4.63-4-4.77-4.2-.14-.2-1.15-1.53-1.15-2.92s.72-2.07.98-2.35c.24-.27.53-.34.7-.34h.5c.16 0 .38-.03.58.44.24.56.8 1.95.87 2.09.07.14.12.3.02.5-.1.2-.15.32-.3.5-.15.17-.3.38-.44.5-.14.15-.3.3-.13.6.17.3.77 1.27 1.65 2.06 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.66-.08.18-.2.77-.9.98-1.2.2-.3.4-.25.68-.15.27.1 1.75.83 2.05.98.3.15.5.22.58.35.07.13.07.75-.17 1.41Z"/></svg>
 </a>
 
@@ -664,11 +640,15 @@
      مفيش حاجة تانية محتاج تعدلها، السلايدر والـ lightbox بيتحدثوا تلقائي.
   ========================================================= */
   const galleryImages = [
-    { src: 'images/laialy-camp-aerial.jpg',   caption: 'إطلالة عامة على مخيم ليالي وسط الجبال' },
-    { src: 'images/laialy-night-stage.jpg',   caption: 'مسرح العروض الليلية بالإضاءة' },
-    { src: 'images/laialy-seating-night.jpg', caption: 'جلسات المخيم ليلاً بالسجاد الأحمر والأزرق' },
-    { src: 'images/laialy-lounge-seating.jpg',caption: 'ركن جلوس بدوي تقليدي' },
-    { src: 'images/laialy-camp-evening.jpg',  caption: 'المخيم وقت الغروب مع لافتات الاستقبال' },
+    { src: 'images/bedouin-full-11.jpg', caption: 'إطلالة عامة على مخيم ليالي وسط الجبال' },
+    { src: 'images/bedouin-full-7.jpg', caption: 'مسرح العروض الليلية بالإضاءة' },
+    { src: 'images/bedouin-full-2.jpg', caption: 'ركن جلوس بدوي تقليدي' },
+    { src: 'images/bedouin-full-13.jpg', caption: 'جلسات المخيم بالسجاد الأحمر والوسائد' },
+    { src: 'images/bedouin-full-9.jpg', caption: 'المخيم وقت الغروب بين الجبال' },
+    { src: 'images/bedouin-full-15.jpg', caption: 'الخيم البدوية مع إضاءة المساء' },
+    { src: 'images/bedouin-full-20.jpg', caption: 'طاولات وجلسات على السجاد الأحمر' },
+    { src: 'images/bedouin-full-22.jpg', caption: 'المسرح تحت أضواء الليل' },
+    { src: 'images/bedouin-full-27.jpg', caption: 'جلسات بالسجاد الأحمر والأزرق' },
   ];
 
   function renderGallery(){
@@ -677,7 +657,7 @@
     if(!track) return;
     track.innerHTML = galleryImages.map((item, i) => `
       <div class="carousel-slide${i===0 ? ' active' : ''}" data-index="${i}">
-        <img src="${item.src}" alt="${item.caption}" loading="${i===0 ? 'eager':'lazy'}" onclick="openLightbox('${item.src}')">
+        <img src="${item.src}" alt="${item.caption}" loading="${i===0 ? 'eager':'lazy'}" onclick="openLB(galleryImages.map(g=>g.src),${i})">
         <div class="carousel-caption">
           <span class="idx">${i+1} / ${galleryImages.length}</span>
           <div class="cap">${item.caption}</div>
@@ -744,19 +724,99 @@
     }, {passive:true});
   }
 
-  function openLightbox(src){
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
+  /* ===== LIGHTBOX (تنقل + سحب + كيبورد) ===== */
+  const LB = {list:[], i:0, el:null, img:null, cnt:null};
+  function openLB(list, i){
+    LB.el = document.getElementById('lightbox'); LB.img = document.getElementById('lightboxImg'); LB.cnt = document.getElementById('lbCount');
+    LB.list = list;
+    LB.el.classList.add('open'); document.body.style.overflow = 'hidden'; document.body.classList.add('lb-open');
+    lbShow(i, true);
   }
+  function openLightbox(src){ openLB([src], 0); }
+  function lbShow(i, first){
+    const n = LB.list.length; LB.i = (i + n) % n;
+    const src = LB.list[LB.i];
+    LB.el.classList.toggle('single', n < 2);
+    LB.cnt.textContent = (LB.i + 1) + ' / ' + n;
+    const apply = () => { LB.img.onload = () => LB.img.classList.remove('out'); LB.img.src = src; };
+    LB.img.classList.add('out');
+    if(first) apply(); else setTimeout(apply, 180);
+    [LB.i + 1, LB.i - 1].forEach(k => { const im = new Image(); im.src = LB.list[(k + n) % n]; });
+  }
+  function lbMove(d, e){ if(e) e.stopPropagation(); if(LB.list.length > 1) lbShow(LB.i + d); }
   function closeLightbox(e){
-    if(e.target.id !== 'lightbox' && e.target.id !== 'lightboxImg' && !e.target.classList.contains('lightbox-close')) return;
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
+    if(e && e.target !== LB.el && !e.target.classList.contains('lightbox-close')) return;
+    LB.el.classList.remove('open'); document.body.style.overflow = ''; document.body.classList.remove('lb-open');
+    LB.img.classList.add('out');
   }
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+    if(!LB.el || !LB.el.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox({target: LB.el});
+    else if(e.key === 'ArrowRight') lbMove(1);
+    else if(e.key === 'ArrowLeft') lbMove(-1);
   });
+  (function(){
+    const box = document.getElementById('lightbox'); let sx = 0;
+    box.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    box.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 50) lbMove(dx < 0 ? 1 : -1); }, {passive:true});
+  })();
+
+  /* ===== السلايدر الانسيابي لكل رحلة =====
+     لإضافة صور: ضعها في images/ بالاسم  set-full-N.jpg و set-thumb-N.jpg ثم زوّد n هنا. */
+  const SETS = {
+    kartbuggy:{n:20, o:'p', alt:'رحلة الباجي'},
+    quad:{n:20, o:'p', alt:'رحلة الكارباجي'},
+    bedouin:{n:28, o:'l', alt:'الحفلة البدوية', first:[9,2,13,7,15,11,20,10,14,6]},
+    camel:{n:7, o:'l', alt:'رحلة ركوب الجمال', first:[5,3,4,1,7,2,6]}
+  };
+  function initSlider(root){
+    const cfg = SETS[root.dataset.set]; if(!cfg) return;
+    const order = (cfg.first || []).slice();
+    for(let k = 1; k <= cfg.n; k++) if(!order.includes(k)) order.push(k);
+    const full = order.map(k => `images/${root.dataset.set}-full-${k}.jpg`);
+    const thumb = order.map(k => `images/${root.dataset.set}-thumb-${k}.jpg`);
+    root.classList.add(cfg.o === 'p' ? 'portrait' : 'land');
+    root.innerHTML = `<div class="stage">`
+      + full.map((s, i) => `<div class="slide"><img data-src="${s}" alt="${cfg.alt} - ${i + 1}"></div>`).join('')
+      + `<button class="s-arrow prev" aria-label="السابق">‹</button><button class="s-arrow next" aria-label="التالي">›</button>`
+      + `<span class="s-count"></span><div class="s-bar"><i></i></div></div>`
+      + `<div class="thumbs">` + thumb.map((s, i) => `<button aria-label="صورة ${i + 1}"><img src="${s}" alt="" loading="lazy"></button>`).join('') + `</div>`;
+    const stage = root.querySelector('.stage'), strip = root.querySelector('.thumbs'), bar = root.querySelector('.s-bar i'), cnt = root.querySelector('.s-count');
+    const slides = [...root.querySelectorAll('.slide')], imgs = slides.map(s => s.firstChild), tb = [...strip.children];
+    const n = full.length; let cur = -1, moved = false, sx = 0;
+    const load = i => { const im = imgs[(i + n) % n]; if(im.dataset.src){ im.src = im.dataset.src; delete im.dataset.src; } };
+    function go(i){
+      i = (i + n) % n; if(i === cur) return;
+      load(i); load(i + 1); load(i - 1);
+      slides.forEach((s, k) => s.classList.toggle('on', k === i));
+      tb.forEach((b, k) => b.classList.toggle('on', k === i));
+      cnt.textContent = (i + 1) + ' / ' + n;
+      const t = tb[i];
+      strip.scrollTo({left: t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2, behavior: 'smooth'});
+      cur = i; bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+    }
+    bar.addEventListener('animationend', () => go(cur + 1));
+    root.querySelector('.prev').onclick = () => go(cur - 1);
+    root.querySelector('.next').onclick = () => go(cur + 1);
+    tb.forEach((b, k) => b.onclick = () => go(k));
+    stage.addEventListener('pointerdown', e => { sx = e.clientX; moved = false; });
+    stage.addEventListener('pointerup', e => { const dx = e.clientX - sx; if(Math.abs(dx) > 45){ moved = true; go(cur + (dx < 0 ? 1 : -1)); } });
+    stage.addEventListener('click', e => { if(moved || e.target.closest('.s-arrow')) return; openLB(full, cur); });
+    new IntersectionObserver(es => es.forEach(en => root.classList.toggle('off', !en.isIntersecting)), {threshold:.35}).observe(root);
+    go(0);
+  }
+  document.querySelectorAll('.slider').forEach(initSlider);
+
+  /* ===== ظهور انسيابي أثناء التمرير ===== */
+  (function(){
+    document.documentElement.classList.add('js');
+    const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), {threshold:.12});
+    document.querySelectorAll('.trip-copy,.trip-gallery,.why-item,.gallery-head,.carousel,.about-grid').forEach((el, i) => {
+      el.classList.add('rv');
+      if(el.classList.contains('why-item')) el.style.transitionDelay = ((i % 4) * 90) + 'ms';
+      io.observe(el);
+    });
+  })();
 </script>
 </body>
 </html>

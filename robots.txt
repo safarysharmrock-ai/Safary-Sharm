@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rocksafari-sharm.com/sitemap.xml
+Sitemap: https://safarysharmrock-ai.github.io/Safary-Sharm/sitemap.xml
